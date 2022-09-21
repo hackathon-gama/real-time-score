@@ -35,3 +35,6 @@
 
 #dotenv
 .env
+
+# vscode
+.vscode/
