@@ -1,0 +1,44 @@
+version: '3.8'
+
+volumes:
+  postgres: {}
+
+networks:
+  app-net: {}
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        - BUNDLE_GEMS__CONTRIBSYS__COM
+    depends_on:
+     - postgres
+    networks:
+      - app-net
+    ports:
+      - 3000:3000
+    tty: true
+    stdin_open: true
+    env_file:
+    - .env
+    volumes:
+    - ./:/app:delegated
+
+  postgres:
+    image: postgres:13.4-alpine
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${DATABASE_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - 5432:5432
+    networks:
+      - app-net
+    volumes:
+      - postgres:/var/lib/postgresql/data
