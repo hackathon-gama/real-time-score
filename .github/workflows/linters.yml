@@ -1,0 +1,21 @@
+name: Rails - Run linters and security analysis
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  linters:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run rubocop
+        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml run --rm linters-app bundle exec rubocop --parallel --format progress --format offenses
+
+      - name: Run ruby check sintax
+        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml run --rm linters-app sh -c "ruby -wc **/*.rb"
+
+      - name: Run brakeman
+        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml run --rm linters-app bundle exec brakeman -q --format json -w2
