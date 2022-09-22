@@ -50,14 +50,14 @@ group :development, :test do
   gem 'rubocop-github'
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', '~> 2.13', '>= 2.13.2', require: false
+
+  # Testing
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'rspec-rails', '~> 5.1', '>= 5.1.1'
 end
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-end
-
-group :test do
-  # Code linting gems
-  gem 'rubocop-rspec', require: false
 end
