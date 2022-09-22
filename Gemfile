@@ -58,6 +58,10 @@ group :development, :test do
 end
 
 group :development do
+  # static analysis tools which checks Ruby on Rails applications for security vulnerabilities
+  gem 'brakeman', '~> 5.3', '>= 5.3.1'
+  gem 'bullet', '~> 7.0', '>= 7.0.3'
+
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
