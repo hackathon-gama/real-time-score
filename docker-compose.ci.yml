@@ -1,6 +1,16 @@
 version: '3.8'
 
 services:
+  app:
+    environment:
+      - RAILS_ENV=test
+
   linters-app:
     build:
         context: .
+
+  postgres:
+    environment:
+      DATABASE_NAME: real-time-score-test
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_pass
