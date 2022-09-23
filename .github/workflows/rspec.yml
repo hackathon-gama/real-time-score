@@ -1,0 +1,18 @@
+name: Rails - Run Rspec
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create and migrate database
+        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml run --rm app bundle exec rails db:create db:migrate
+
+      - name: Run tests
+        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml run --rm app bundle exec rspec --format progress
