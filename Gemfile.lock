@@ -67,8 +67,6 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
     ast (2.4.2)
-    bootsnap (1.13.0)
-      msgpack (~> 1.2)
     brakeman (5.3.1)
     builder (3.2.4)
     bullet (7.0.3)
@@ -108,7 +106,6 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.16.3)
-    msgpack (1.5.6)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -226,11 +223,9 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
-  arm64-darwin-21
-  x86_64-linux-musl
+  ruby
 
 DEPENDENCIES
-  bootsnap
   brakeman (~> 5.3, >= 5.3.1)
   bullet (~> 7.0, >= 7.0.3)
   byebug
@@ -248,7 +243,6 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec (~> 2.13, >= 2.13.2)
   shoulda-matchers
-  tzinfo-data
 
 RUBY VERSION
    ruby 3.1.2p20
