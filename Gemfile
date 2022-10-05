@@ -27,7 +27,7 @@ gem 'jbuilder'
 # gem "bcrypt", "~> 3.1.7"
 
 # Reduces boot times through caching; required in config/boot.rb
-# gem 'bootsnap', require: false
+gem 'bootsnap', require: false
 
 # Use Active Storage variants
 # gem "image_processing", "~> 1.2"
