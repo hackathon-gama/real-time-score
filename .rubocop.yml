@@ -8,6 +8,8 @@ AllCops:
   Exclude:
     - db/**/*
     - bin/*
+    - lib/generators/**/*
+    - lib/templates/**/*
     - node_modules/**/*
     - .simplecov
     - tmp/**/*

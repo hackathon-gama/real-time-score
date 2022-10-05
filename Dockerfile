@@ -12,12 +12,10 @@ USER pele
 WORKDIR ${RAILS_ROOT}
 
 COPY --chown=pele:pele Gemfile ./
-ARG BUNDLE_GEMS__CONTRIBSYS__COM=":"
 RUN gem install bundler \
   && bundle install --jobs 20 --retry 5
 
 COPY --chown=pele:pele . .
-RUN rails dev:cache
 
 EXPOSE 3000
 ENTRYPOINT [ "tini", "--" ]
