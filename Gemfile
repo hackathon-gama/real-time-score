@@ -27,7 +27,7 @@ gem 'jbuilder'
 # gem "bcrypt", "~> 3.1.7"
 
 # Reduces boot times through caching; required in config/boot.rb
-# gem 'bootsnap', require: false
+gem 'bootsnap', require: false
 
 # Use Active Storage variants
 # gem "image_processing", "~> 1.2"
@@ -60,6 +60,8 @@ group :development do
   # applications for security vulnerabilities
   gem 'brakeman', '~> 5.3', '>= 5.3.1'
   gem 'bullet', '~> 7.0', '>= 7.0.3'
+  gem 'guard'
+  gem 'guard-rspec', '~> 4.7'
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
