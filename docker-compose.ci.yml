@@ -4,6 +4,7 @@ services:
   app:
     environment:
       - RAILS_ENV=test
+      - DATABASE_URL=postgresql://postgres_user:postgres_pass@postgres:5432/real-time-score
 
   linters-app:
     build:
@@ -11,6 +12,6 @@ services:
 
   postgres:
     environment:
-      DATABASE_NAME: real-time-score-test
+      DATABASE_NAME: real-time-score_test
       POSTGRES_USER: postgres_user
       POSTGRES_PASSWORD: postgres_pass
