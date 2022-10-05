@@ -11,7 +11,7 @@ RUN mkdir -p ${RAILS_ROOT}/tmp/pids \
 USER pele
 WORKDIR ${RAILS_ROOT}
 
-COPY --chown=pele:pele Gemfile ./
+COPY --chown=pele:pele Gemfile Gemfile.lock ./
 RUN gem install bundler \
   && bundle install --jobs 20 --retry 5
 
