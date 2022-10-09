@@ -36,6 +36,9 @@ gem 'bootsnap', require: false
 # making cross-origin AJAX possible
 # gem "rack-cors"
 
+gem 'newrelic_rpm'
+gem 'newrelic-infinite_tracing'
+
 group :development, :test do
   # https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'byebug'
