@@ -3,11 +3,9 @@ version: '3.8'
 volumes:
   postgres: {}
 
-networks:
-  app-net: {}
-
 services:
   app:
+    container_name: app
     build:
       context: .
     depends_on:
@@ -18,10 +16,44 @@ services:
       - 3000:3000
 
   postgres:
+    container_name: postgres_soccer
     image: postgres:13.4-alpine
+    environment:
+      # POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: "trust"
     ports:
       - 5432:5432
     networks:
       - app-net
     volumes:
       - postgres:/var/lib/postgresql/data
+
+  localstack:
+    container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main}"
+    image: localstack/localstack
+    ports:
+      - "127.0.0.1:4566:4566"            # LocalStack Gateway
+      - "127.0.0.1:4510-4559:4510-4559"  # external services port range
+      - "127.0.0.1:53:53"                # DNS config (only required for Pro)
+      - "127.0.0.1:53:53/udp"            # DNS config (only required for Pro)
+      - "127.0.0.1:443:443"              # LocalStack HTTPS Gateway (only required for Pro)
+    environment:
+      - DEBUG=${DEBUG-}
+      - PERSISTENCE=${PERSISTENCE-}
+      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR-}
+      - LOCALSTACK_API_KEY=${LOCALSTACK_API_KEY-}  # only required for Pro
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+    networks:
+      - net_localstack
+
+networks:
+  app-net: {}
+  net_localstack:
+    external:
+      name: "localstack"
