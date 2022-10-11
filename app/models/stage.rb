@@ -3,5 +3,8 @@
 class Stage < ApplicationRecord
   validates :name, presence: true
 
-  enum name: { groups: 0, octave: 1, fourth_final: 2, semi:3, final: 4 }
+  enum name: {
+    groups: 'groups', octave: 'octave',
+    fourth_final: 'fourth_final', semi: 'semi', final: 'final'
+  }
 end
