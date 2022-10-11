@@ -3,11 +3,9 @@ version: '3.8'
 volumes:
   postgres: {}
 
-networks:
-  app-net: {}
-
 services:
   app:
+    container_name: app
     build:
       context: .
     depends_on:
@@ -18,10 +16,19 @@ services:
       - 3000:3000
 
   postgres:
+    container_name: postgres_soccer
     image: postgres:13.4-alpine
+    environment:
+      # POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: "trust"
     ports:
       - 5432:5432
     networks:
       - app-net
     volumes:
       - postgres:/var/lib/postgresql/data
+
+networks:
+  app-net: {}
