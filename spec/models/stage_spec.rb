@@ -5,11 +5,20 @@ require 'rails_helper'
 RSpec.describe Stage, type: :model do
   subject(:stage) { build(:stage) }
 
-  let(:enum_values) { { groups: 0, octave: 1, fourth_final: 2, semi:3, final: 4 } }
-
   describe 'validations' do
     it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to define_enum_for(:name).with_values(enum_values) }
+
+    it do
+        should define_enum_for(:name).
+          with_values(
+            groups: 'groups',
+            octave: 'octave',
+            fourth_final: 'fourth_final',
+            semi: 'semi',
+            final: 'final'
+          ).
+          backed_by_column_of_type(:string)
+      end
   end
 
   describe 'stage create' do
