@@ -35,6 +35,8 @@ gem 'bootsnap', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS),
 # making cross-origin AJAX possible
 # gem "rack-cors"
+gem 'newrelic-infinite_tracing'
+gem 'newrelic_rpm'
 
 group :development, :test do
   # https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
