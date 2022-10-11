@@ -15,7 +15,7 @@ gem 'pg', '~> 1.4', '>= 1.4.3'
 gem 'puma', '~> 5.0'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-# gem "jbuilder"
+gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -25,9 +25,6 @@ gem 'puma', '~> 5.0'
 
 # Use Active Model has_secure_password
 # gem "bcrypt", "~> 3.1.7"
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
@@ -41,7 +38,7 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   # https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'byebug'
 
   gem 'dotenv-rails' # Loads .env file
 
@@ -54,6 +51,7 @@ group :development, :test do
 
   # Testing
   gem 'factory_bot_rails', '~> 6.2'
+  gem 'faker'
   gem 'rspec-rails', '~> 5.1', '>= 5.1.1'
 end
 
@@ -62,7 +60,13 @@ group :development do
   # applications for security vulnerabilities
   gem 'brakeman', '~> 5.3', '>= 5.3.1'
   gem 'bullet', '~> 7.0', '>= 7.0.3'
+  gem 'guard'
+  gem 'guard-rspec', '~> 4.7'
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+end
+
+group :test do
+  gem 'shoulda-matchers'
 end
