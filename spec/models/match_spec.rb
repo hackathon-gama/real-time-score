@@ -10,6 +10,7 @@ RSpec.describe Match, type: :model do
     it { is_expected.to belong_to(:stage) }
     it { is_expected.to belong_to(:team_away) }
     it { is_expected.to belong_to(:team_home) }
+    it { should have_many(:interactions) }
   end
 
   describe 'validations' do
