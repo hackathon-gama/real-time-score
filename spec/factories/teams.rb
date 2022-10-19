@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :team do
-    name { Faker::Name.name_with_middle }
+    name { Faker::Address.country }
     description { Faker::Lorem.sentence }
 
     photo do
