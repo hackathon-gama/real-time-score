@@ -6,6 +6,7 @@ class CreateMatches < ActiveRecord::Migration[7.0]
       t.string :status, default: 'pending'
       t.datetime :match_date
       t.references :stage, null: false, foreign_key: true
+      t.belongs_to :team
 
       t.timestamps
     end

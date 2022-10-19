@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_234501) do
     t.string "status", default: "pending"
     t.datetime "match_date"
     t.bigint "stage_id", null: false
+    t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "team_away_id"
@@ -55,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_234501) do
     t.index ["stage_id"], name: "index_matches_on_stage_id"
     t.index ["team_away_id"], name: "index_matches_on_team_away_id"
     t.index ["team_home_id"], name: "index_matches_on_team_home_id"
+    t.index ["team_id"], name: "index_matches_on_team_id"
   end
 
   create_table "stages", force: :cascade do |t|
