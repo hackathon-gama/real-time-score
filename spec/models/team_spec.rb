@@ -14,7 +14,7 @@ RSpec.describe Team, type: :model do
     it { is_expected.to validate_length_of(:name).is_at_most(255) }
     it { is_expected.to validate_length_of(:description).is_at_most(255) }
     it { is_expected.to have_one(:photo_attachment) }
-    it { should have_many(:matches) }
+    it { is_expected.to have_many(:matches) }
   end
 
   describe 'team create' do

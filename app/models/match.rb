@@ -5,7 +5,7 @@ class Match < ApplicationRecord
   belongs_to :team_home, class_name: 'Team'
   belongs_to :team_away, class_name: 'Team'
 
-  has_many :interactions
+  has_many :interactions, dependent: :destroy
 
   validates :home_goals, numericality: { only_integer: true }
   validates :away_goals, numericality: { only_integer: true }

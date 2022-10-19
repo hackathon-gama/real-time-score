@@ -6,5 +6,5 @@ class Team < ApplicationRecord
   validates :description, presence: true, length: { maximum: 255 }
   has_one_attached :photo
 
-  has_many :matches
+  has_many :matches, dependent: :destroy
 end
