@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'file_extractors/base_extractor'
 require 'csv'
 
 class CSVExtractor < BaseExtractor
-  DEFAULT_OPTIONS = { col_sep: ';', headers: true, encoding: 'utf-8' }
+  DEFAULT_OPTIONS = { col_sep: ';', headers: true, encoding: 'utf-8' }.freeze
 
   attr_accessor :options
 

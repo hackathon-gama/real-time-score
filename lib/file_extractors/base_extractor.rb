@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BaseExtractor
   attr_reader :file
 
@@ -24,10 +26,10 @@ class BaseExtractor
   private
 
   def row_interaction(&block)
-    raise NotImplementedError.new('Not implemented yet')
+    raise(NotImplementedError, 'Not implemented yet')
   end
 
-  def transform_row(row)
-    raise NotImplementedError.new('Not implemented yet')
+  def transform_row(_row)
+    raise(NotImplementedError, 'Not implemented yet')
   end
 end
