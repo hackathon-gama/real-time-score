@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Api::V1::DirectUploads", type: :request do
-  fdescribe "post /create" do
+RSpec.describe 'Api::V1::DirectUploads', type: :request do
+  describe 'post /create' do
     let(:params) do
       {
         blob: {
@@ -14,17 +16,15 @@ RSpec.describe "Api::V1::DirectUploads", type: :request do
     end
 
     it 'return :ok status code' do
-      post api_v1_direct_uploads_path,
-        params: params
+      post api_v1_direct_uploads_path, params: params
 
-        expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:ok)
     end
 
-    it 'return :ok status code' do
-      post api_v1_direct_uploads_path,
-        params: params
+    it 'return direct upload url' do
+      post api_v1_direct_uploads_path, params: params
 
-        expect(response.parsed_body.dig('direct_upload', 'url')).to be_present
+      expect(response.parsed_body.dig('direct_upload', 'url')).to be_present
     end
   end
 end
