@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :interaction do
-    interaction_type { 'fault' }
+    interaction_type { 'start_game' }
     description { Faker::Lorem.sentence }
     time { 1 }
     minutes { 1 }

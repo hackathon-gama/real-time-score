@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_004353) do
   end
 
   create_table "interactions", force: :cascade do |t|
-    t.string "interaction_type"
+    t.string "interaction_type", default: "start_game"
     t.string "description"
     t.integer "time"
     t.integer "minutes"
