@@ -5,7 +5,7 @@ class CreateInteractions < ActiveRecord::Migration[7.0]
       t.string :description
       t.integer :time
       t.integer :minutes
-      t.belongs_to :match
+      t.references :match, foreign_key: true
 
       t.timestamps
     end

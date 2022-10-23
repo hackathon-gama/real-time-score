@@ -64,7 +64,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_004353) do
     t.datetime "updated_at", null: false
     t.bigint "team_away_id"
     t.bigint "team_home_id"
-    t.index ["stage_id"], name: "index_matches_on_stage_id"
+    t.index ["away_goals"], name: "index_matches_on_away_goals", unique: true
+    t.index ["home_goals"], name: "index_matches_on_home_goals", unique: true
+    t.index ["stage_id"], name: "index_matches_on_stage_id", unique: true
     t.index ["team_away_id"], name: "index_matches_on_team_away_id"
     t.index ["team_home_id"], name: "index_matches_on_team_home_id"
     t.index ["team_id"], name: "index_matches_on_team_id"
@@ -86,5 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_004353) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "interactions", "matches"
   add_foreign_key "matches", "stages"
+  add_foreign_key "matches", "teams"
 end
