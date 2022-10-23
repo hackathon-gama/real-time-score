@@ -4,7 +4,7 @@ class Interaction < ApplicationRecord
   enum interaction_type: {
     faults: 'faults', goal: 'goal',
     corner_kick: 'corner_kick', penalty: 'penalty',
-    start_game: 'start_game' ,final_game: 'final_game'
+    start_game: 'start_game', final_game: 'final_game'
   }
   validates :interaction_type, presence: true
   validates :description, length: { maximum: 255 }

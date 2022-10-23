@@ -15,7 +15,7 @@ RSpec.describe Interaction, type: :model do
         .with_values(
           faults: 'faults', goal: 'goal',
           corner_kick: 'corner_kick', penalty: 'penalty',
-          start_game: 'start_game' ,final_game: 'final_game'
+          start_game: 'start_game', final_game: 'final_game'
         )
         .backed_by_column_of_type(:string)
     end
