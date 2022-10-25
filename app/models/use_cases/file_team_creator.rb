@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UseCases
   class FileTeamCreator < Base
     attr_reader :file_extractor, :permited_attributes

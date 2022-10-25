@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe UseCases::FileTeamCreator do
   context 'when pass correct permited_attributes' do
-    let(:file_extractor) { double(:file_extractor) }
+    let(:file_extractor) { instance_double(BaseExtractor) }
 
     before do
       allow(file_extractor).to receive(:execute)
@@ -27,7 +29,7 @@ RSpec.describe UseCases::FileTeamCreator do
   end
 
   context 'when dont pass correct permited_attributes' do
-    let(:file_extractor) { double(:file_extractor) }
+    let(:file_extractor) { instance_double(BaseExtractor) }
 
     before do
       allow(file_extractor).to receive(:execute)
