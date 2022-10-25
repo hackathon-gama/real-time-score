@@ -59,17 +59,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_004353) do
     t.string "status", default: "pending"
     t.datetime "match_date"
     t.bigint "stage_id", null: false
-    t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "team_away_id"
     t.bigint "team_home_id"
-    t.index ["away_goals"], name: "index_matches_on_away_goals", unique: true
-    t.index ["home_goals"], name: "index_matches_on_home_goals", unique: true
+    t.index ["stage_id", "team_away_id", "team_home_id"], name: "index_matches_on_stage_id_and_team_away_id_and_team_home_id", unique: true
     t.index ["stage_id"], name: "index_matches_on_stage_id", unique: true
     t.index ["team_away_id"], name: "index_matches_on_team_away_id"
     t.index ["team_home_id"], name: "index_matches_on_team_home_id"
-    t.index ["team_id"], name: "index_matches_on_team_id"
   end
 
   create_table "stages", force: :cascade do |t|
@@ -90,5 +87,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_004353) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "interactions", "matches"
   add_foreign_key "matches", "stages"
-  add_foreign_key "matches", "teams"
 end
