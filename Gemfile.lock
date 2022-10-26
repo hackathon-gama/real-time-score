@@ -83,6 +83,7 @@ GEM
       aws-sigv4 (~> 1.4)
     aws-sigv4 (1.5.2)
       aws-eventstream (~> 1, >= 1.0.2)
+    bcrypt (3.1.18)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
     brakeman (5.3.1)
@@ -116,9 +117,13 @@ GEM
     formatador (1.1.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    google-protobuf (3.21.7)
     google-protobuf (3.21.7-x86_64-linux)
     googleapis-common-protos-types (1.4.0)
       google-protobuf (~> 3.14)
+    grpc (1.49.1)
+      google-protobuf (~> 3.21)
+      googleapis-common-protos-types (~> 1.0)
     grpc (1.49.1-x86_64-linux)
       google-protobuf (~> 3.21)
       googleapis-common-protos-types (~> 1.0)
@@ -143,6 +148,7 @@ GEM
       activesupport (>= 5.0.0)
     jmespath (1.6.1)
     json (2.6.2)
+    jwt (2.5.0)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -296,10 +302,12 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-linux
   x86_64-linux-musl
 
 DEPENDENCIES
   aws-sdk-s3
+  bcrypt (~> 3.1.7)
   bootsnap
   brakeman (~> 5.3, >= 5.3.1)
   bullet (~> 7.0, >= 7.0.3)
@@ -311,6 +319,7 @@ DEPENDENCIES
   guard
   guard-rspec (~> 4.7)
   jbuilder
+  jwt
   newrelic-infinite_tracing
   newrelic_rpm
   pg (~> 1.4, >= 1.4.3)
