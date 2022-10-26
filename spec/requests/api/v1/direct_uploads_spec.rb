@@ -10,7 +10,7 @@ RSpec.describe 'Api::V1::DirectUploads', type: :request do
           filename: Faker::File.file_name(name: 'image', ext: 'png'),
           byte_size: Faker::Number.number(digits: 10),
           checksum: Faker::Crypto.sha1,
-          content_type: Faker::File.mime_type(media_type: 'image')
+          content_type: 'image/png'
         }
       }
     end
