@@ -31,10 +31,14 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+volume/*
 
-
+# Ignore newrelic config
+/config/newrelic.yml
 #dotenv
 .env
 
 # vscode
 .vscode/
+
+/volume
