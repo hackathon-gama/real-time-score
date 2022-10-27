@@ -20,6 +20,9 @@ gem 'jbuilder'
 gem 'aws-sdk-rails', '~> 3.6', '>= 3.6.4'
 gem 'aws-sdk-s3', require: false
 
+# Ruby state machine
+gem 'aasm', '~> 5.4'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
