@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_26_234044) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_26_233455) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,6 +67,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_26_234044) do
     t.index ["stage_id"], name: "index_matches_on_stage_id", unique: true
     t.index ["team_away_id"], name: "index_matches_on_team_away_id"
     t.index ["team_home_id"], name: "index_matches_on_team_home_id"
+  end
+
+  create_table "file_import_managers", force: :cascade do |t|
+    t.string "status", default: "pending", null: false
+    t.integer "retries", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stages", force: :cascade do |t|
