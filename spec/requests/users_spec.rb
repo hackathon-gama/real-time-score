@@ -8,7 +8,7 @@ RSpec.describe '/users', type: :request do
   let(:user_params) { build(:user).attributes }
 
   describe 'POST /users' do
-    context 'creates user' do
+    context 'when creates user' do
       before do
         user_params['password'] = user_params['password_digest']
       end
@@ -19,10 +19,10 @@ RSpec.describe '/users', type: :request do
       end
 
       it 'with invalid params' do
-        post api_v1_users_url, params: { user: user_params.except('full_name') }, headers: auth_headers
+        post api_v1_users_url, params: { user: user_params.except('full_name') },
+          headers: auth_headers
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
-
 end
