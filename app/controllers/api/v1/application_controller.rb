@@ -11,22 +11,24 @@ class Api::V1::ApplicationController < ActionController::API
 
   def decode_token
     auth_header = request.headers['Authorization']
-    if auth_header
-      token = auth_header.split.last
-      begin
-        JWT.decode(token, SECRET_KEY, true, algorithm: 'HS256')
-      rescue JWT::DecodeError
-        nil
-      end
+
+    return unless auth_header
+
+    token = auth_header.split.last
+    begin
+      JWT.decode(token, SECRET_KEY, true, algorithm: 'HS256')
+    rescue JWT::DecodeError
+      nil
     end
   end
 
   def current_user
     decoded_token = decode_token
-    if decoded_token
-      user_id = decoded_token.first['user_id']
-      @user = User.find_by(id: user_id)
-    end
+
+    return unless decoded_token
+
+    user_id = decoded_token.first['user_id']
+    @user = User.find_by(id: user_id)
   end
 
   def authorize
