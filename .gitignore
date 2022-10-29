@@ -40,3 +40,5 @@ volume/*
 
 # vscode
 .vscode/
+
+/volume
