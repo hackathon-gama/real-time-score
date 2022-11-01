@@ -31,6 +31,9 @@ gem 'aws-sdk-s3', require: false
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+gem 'bcrypt', '~> 3.1.7'
+gem 'jwt'
+
 # Use Active Storage variants
 # gem "image_processing", "~> 1.2"
 
