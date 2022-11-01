@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'matches/index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  mount ActionCable.server => '/cable'
 
   # Defines the root path route ("/")
   # root "articles#index"
