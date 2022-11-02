@@ -4,6 +4,8 @@ class Api::V1::FileImportTeamsController < ApplicationController
   def create
     @file_import_manager = FileImportManager.create!(file_import_manager_params)
 
+    FileImportTeamJob.perform_later(@file_import_manager.id)
+
     head :created
   end
 

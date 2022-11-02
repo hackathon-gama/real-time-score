@@ -19,5 +19,15 @@ RSpec.describe 'Api::V1::FileImportTeams', type: :request do
 
       expect(response).to have_http_status(:created)
     end
+
+    it 'will enqueue FileImportTeamJob' do
+      post api_v1_file_import_teams_path,
+        params: params,
+        as: :json
+
+      expect(FileImportTeamJob).to(
+        have_been_enqueued.with(FileImportManager.last.id)
+      )
+    end
   end
 end
