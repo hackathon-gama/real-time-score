@@ -25,6 +25,9 @@ module App
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    config.autoload_paths << config.root.join('lib')
+    config.eager_load_paths << config.root.join('lib')
+
     # Rails generate files
     config.generators do |g|
       g.test_framework :rspec
