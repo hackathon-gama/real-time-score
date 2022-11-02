@@ -17,7 +17,7 @@ class CSVExtractor < BaseExtractor
   private
 
   def row_interaction(&block)
-    CSV.foreach(file, **options, &block)
+    CSV.parse(file, **options, &block)
   end
 
   def transform_row(row)
