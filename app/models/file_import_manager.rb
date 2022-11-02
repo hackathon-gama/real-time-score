@@ -32,4 +32,8 @@ class FileImportManager < ApplicationRecord
   def can_run?
     pending? || failed?
   end
+
+  def file_extension
+    file&.filename&.extension
+  end
 end
