@@ -47,8 +47,10 @@ gem 'rack-cors'
 group :development, :test do
   # https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'byebug'
+  gem 'pry-byebug', '~> 3.10', '>= 3.10.1'
 
-  gem 'dotenv-rails' # Loads .env file
+  # Loads .env file
+  gem 'dotenv-rails'
 
   # Code linting gems
   gem 'rubocop', '~> 1.26', '>= 1.26.1'

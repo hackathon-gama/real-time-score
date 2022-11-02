@@ -191,6 +191,9 @@ GEM
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    pry-byebug (3.10.1)
+      byebug (~> 11.0)
+      pry (>= 0.13, < 0.15)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -314,6 +317,7 @@ DEPENDENCIES
   newrelic-infinite_tracing
   newrelic_rpm
   pg (~> 1.4, >= 1.4.3)
+  pry-byebug (~> 3.10, >= 3.10.1)
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.4)
