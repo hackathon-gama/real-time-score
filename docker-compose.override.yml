@@ -33,7 +33,6 @@ services:
       - "./localstack-init.sh:/docker-entrypoint-initaws.d/00-localstack-init.sh"
 
     networks:
-      - localstack
+      - app-net
 networks:
   app-net: {}
-  localstack: {}
