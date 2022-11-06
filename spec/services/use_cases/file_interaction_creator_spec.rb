@@ -12,7 +12,7 @@ RSpec.describe UseCases::FileInteractionCreator do
       allow(file_extractor).to receive(:execute)
         .and_yield({ interaction_type: 'start_game', description: Faker::Lorem.sentence,
           time: 1, minutes: 20, match: match })
-        .and_yield({ interaction_type: 'start_game', description: Faker::Lorem.sentence,
+        .and_yield({ interaction_type: 'faults', description: Faker::Lorem.sentence,
           time: 2, minutes: 20, match: match })
     end
 
@@ -31,7 +31,7 @@ RSpec.describe UseCases::FileInteractionCreator do
       allow(file_extractor).to receive(:execute)
         .and_yield({ interaction_type: 'start_game', description: Faker::Lorem.sentence,
           time: 1, minutes: 20, match: match })
-        .and_yield({ interaction_type: 'start_game', description: Faker::Lorem.sentence,
+        .and_yield({ interaction_type: 'faults', description: Faker::Lorem.sentence,
           time: 2, minutes: 20, match: match })
     end
 
