@@ -13,9 +13,9 @@ RSpec.describe UseCases::FileMatchCreator do
 
     before do
       allow(file_extractor).to receive(:execute)
-        .and_yield({ away_goals: 0, home_goals: 0, match_date: '2022-10-11 23:22:10',
+        .and_yield({ away_goals: 0, home_goals: 0, match_date: Faker::Time,
           team_away: team_away, team_home: team_home, stage: stage })
-        .and_yield({ away_goals: 2, home_goals: 1, match_date: '2022-05-11 23:22:10',
+        .and_yield({ away_goals: 2, home_goals: 1, match_date: Faker::Time,
           team_away: team_away, team_home: team_home, stage: stage2 })
     end
 
@@ -32,9 +32,9 @@ RSpec.describe UseCases::FileMatchCreator do
 
     before do
       allow(file_extractor).to receive(:execute)
-        .and_yield({ away_goals: 0, home_goals: 0, match_date: '2022-10-11 23:22:10',
+        .and_yield({ away_goals: 0, home_goals: 0, match_date: Faker::Time,
           team_away: team_away, team_home: team_home, stage: stage })
-        .and_yield({ away_goals: 2, home_goals: 1, match_date: '2022-05-11 23:22:10',
+        .and_yield({ away_goals: 2, home_goals: 1, match_date: Faker::Time,
           team_away: team_away, team_home: team_home, stage: stage2 })
     end
 
