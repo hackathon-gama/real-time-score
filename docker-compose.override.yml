@@ -17,6 +17,7 @@ services:
     container_name: sqs
     build:
       context: .
+    restart: always
     depends_on:
      - postgres
      - localstack
