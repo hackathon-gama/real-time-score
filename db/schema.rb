@@ -69,6 +69,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_26_234044) do
     t.index ["team_home_id"], name: "index_matches_on_team_home_id"
   end
 
+  create_table "file_import_managers", force: :cascade do |t|
+    t.string "status", default: "pending", null: false
+    t.integer "retries", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stages", force: :cascade do |t|
     t.string "name", default: "groups"
     t.datetime "created_at", null: false

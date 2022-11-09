@@ -20,6 +20,9 @@ gem 'jbuilder'
 gem 'aws-sdk-rails', '~> 3.6', '>= 3.6.4'
 gem 'aws-sdk-s3', require: false
 
+# Ruby state machine
+gem 'aasm', '~> 5.4'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -48,8 +51,10 @@ gem 'rack-cors'
 group :development, :test do
   # https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'byebug'
+  gem 'pry-byebug', '~> 3.10', '>= 3.10.1'
 
-  gem 'dotenv-rails' # Loads .env file
+  # Loads .env file
+  gem 'dotenv-rails'
 
   # Code linting gems
   gem 'rubocop', '~> 1.26', '>= 1.26.1'

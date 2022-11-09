@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (5.4.0)
+      concurrent-ruby (~> 1.0)
     actioncable (7.0.4)
       actionpack (= 7.0.4)
       activesupport (= 7.0.4)
@@ -218,6 +220,9 @@ GEM
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    pry-byebug (3.10.1)
+      byebug (~> 11.0)
+      pry (>= 0.13, < 0.15)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -328,6 +333,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk-rails (~> 3.6, >= 3.6.4)
+  aasm (~> 5.4)
   aws-sdk-s3
   bcrypt (~> 3.1.7)
   bootsnap
@@ -345,6 +351,7 @@ DEPENDENCIES
   newrelic-infinite_tracing
   newrelic_rpm
   pg (~> 1.4, >= 1.4.3)
+  pry-byebug (~> 3.10, >= 3.10.1)
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.4)
