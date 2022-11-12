@@ -6,6 +6,8 @@ class Interaction < ApplicationRecord
     corner_kick: 'corner_kick', penalty: 'penalty',
     start_game: 'start_game', final_game: 'final_game'
   }
+  belongs_to :match
+
   validates :interaction_type, presence: true
   validates :description, length: { maximum: 255 }
   validates :time, numericality: { only_integer: true }

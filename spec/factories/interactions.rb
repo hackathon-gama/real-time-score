@@ -6,5 +6,6 @@ FactoryBot.define do
     description { Faker::Lorem.sentence }
     time { 1 }
     minutes { 1 }
+    match
   end
 end

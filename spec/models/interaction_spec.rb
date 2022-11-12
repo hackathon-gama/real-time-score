@@ -9,6 +9,7 @@ RSpec.describe Interaction, type: :model do
     it { is_expected.to validate_length_of(:description).is_at_most(255) }
     it { is_expected.to validate_numericality_of(:minutes) }
     it { is_expected.to validate_numericality_of(:time) }
+    it { is_expected.to belong_to(:match) }
 
     it do
       expect(interaction).to define_enum_for(:interaction_type)
