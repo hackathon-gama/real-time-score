@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  vegeta:
+    image: vegeta:local
+    build: .
+    network_mode: host
+    volumes:
+      - "./reports:/reports"

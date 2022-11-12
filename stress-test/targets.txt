@@ -1,0 +1,4 @@
+POST http://localhost:3000/api/v1/file_import_teams
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.ETUYUOkmfnWsWIvA8iBOkE2s1ZQ0V_zgnG_c4QRrhbg
+@file_import_body.json
