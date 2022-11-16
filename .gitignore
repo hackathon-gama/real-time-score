@@ -42,3 +42,4 @@ volume/*
 .vscode/
 
 /volume
+.byebug_history
