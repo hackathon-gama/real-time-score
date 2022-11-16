@@ -1,6 +1,6 @@
 FROM ruby:3.1-alpine
 
-RUN apk add --no-cache tzdata gcc musl-dev make libpq-dev curl tini sqlite socat
+RUN apk add --no-cache gcc musl-dev make libpq-dev tini tzdata
 
 RUN adduser -D pele
 
@@ -12,8 +12,7 @@ USER pele
 WORKDIR ${RAILS_ROOT}
 
 COPY --chown=pele:pele Gemfile Gemfile.lock ./
-RUN gem install bundler \
-  && bundle install --jobs 20 --retry 5
+RUN bundle install --jobs 20 --retry 5
 
 COPY --chown=pele:pele . .
 
