@@ -7,7 +7,9 @@ RSpec.describe 'Api::V1::FileImportTeams', type: :request do
 
   describe 'POST /create' do
     before do
-      create(:file_import_manager, file: fixture_file_upload('csv_with_semicolon.csv'))
+      file = fixture_file_upload('csv/teams/with_semicolon.csv')
+
+      create(:file_import_manager, file: file)
     end
 
     let(:params) do
