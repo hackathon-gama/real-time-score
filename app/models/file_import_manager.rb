@@ -19,14 +19,6 @@ class FileImportManager < ApplicationRecord
     event :done do
       transitions from: :processing, to: :processed
     end
-
-    event :fail do
-      transitions from: :processing, to: :failed
-    end
-
-    event :retry do
-      transitions from: :failed, to: :processing
-    end
   end
 
   def can_run?

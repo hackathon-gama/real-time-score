@@ -34,7 +34,6 @@ RSpec.describe FileImportManager, type: :model do
 
       it { is_expected.to have_state(:processing) }
       it { is_expected.to transition_from(:processing).to(:processed).on_event(:done) }
-      it { is_expected.to transition_from(:processing).to(:failed).on_event(:fail) }
 
       it 'will return can_run? equal true' do
         expect(file_import_manager.can_run?).to be(false)
@@ -50,22 +49,11 @@ RSpec.describe FileImportManager, type: :model do
         expect(file_import_manager.can_run?).to be(false)
       end
     end
-
-    context 'when status is failed' do
-      subject(:file_import_manager) { build(:file_import_manager, status: :failed) }
-
-      it { is_expected.to have_state(:failed) }
-      it { is_expected.to transition_from(:failed).to(:processing).on_event(:retry) }
-
-      it 'will return can_run? equal true' do
-        expect(file_import_manager.can_run?).to be(true)
-      end
-    end
   end
 
   describe '#file_extension' do
     it 'will return the file extension' do
-      file = fixture_file_upload('csv_with_semicolon.csv')
+      file = fixture_file_upload('csv/teams/with_semicolon.csv')
       file_import_manager = create(:file_import_manager, file: file)
 
       expect(file_import_manager.file_extension).to eq('csv')
