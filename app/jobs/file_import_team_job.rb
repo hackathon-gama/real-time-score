@@ -12,8 +12,16 @@ class FileImportTeamJob < ApplicationJob
   def perform(file_import_manager_id)
     @file_import_manager = FileImportManager.find(file_import_manager_id)
 
-    UseCases::FileTeamCreator
-      .call(file_extractor, permited_attributes: %w[name description])
+    return unless @file_import_manager.can_run?
+
+    @file_import_manager.start!
+
+    ActiveRecord::Base.transaction do
+      UseCases::FileTeamCreator
+        .call(file_extractor, permited_attributes: %w[name description])
+    end
+
+    @file_import_manager.done!
   end
 
   private
