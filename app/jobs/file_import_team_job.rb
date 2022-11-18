@@ -18,7 +18,10 @@ class FileImportTeamJob < ApplicationJob
 
     ActiveRecord::Base.transaction do
       UseCases::FileTeamCreator
-        .call(file_extractor, permited_attributes: %w[name description])
+        .call(
+          file_extractor,
+          permited_attributes: UseCases::FileTeamCreator::PERMITED_ATTRIBUTES
+        )
     end
 
     @file_import_manager.done!

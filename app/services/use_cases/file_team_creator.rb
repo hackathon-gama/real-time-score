@@ -2,6 +2,8 @@
 
 module UseCases
   class FileTeamCreator < Base
+    PERMITED_ATTRIBUTES = %w[name description].freeze
+
     attr_reader :file_extractor, :permited_attributes
 
     def initialize(file_extractor, permited_attributes:)
