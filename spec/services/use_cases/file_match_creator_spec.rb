@@ -20,7 +20,7 @@ RSpec.describe UseCases::FileMatchCreator do
     before do
       allow(file_extractor).to receive(:execute)
         .and_yield(file_extractor_return)
-        .and_yield(file_extractor_return(:final))
+        .and_yield(file_extractor_return)
     end
 
     it 'will create teams' do

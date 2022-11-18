@@ -2,6 +2,9 @@
 
 module UseCases
   class FileMatchCreator < Base
+    PERMITED_ATTRIBUTES =
+      %w[away_goals home_goals match_date team_away team_home stage].freeze
+
     attr_reader :file_extractor, :permited_attributes
 
     def initialize(file_extractor, permited_attributes:)
