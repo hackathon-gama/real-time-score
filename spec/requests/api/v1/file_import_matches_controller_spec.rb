@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Api::V1::FileImportMaches', type: :request do
   include_context 'with auth headers'
 
-  fdescribe 'POST /create' do
+  describe 'POST /create' do
     before do
       file = fixture_file_upload('csv/teams/with_semicolon.csv')
 
