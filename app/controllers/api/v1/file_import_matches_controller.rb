@@ -2,6 +2,7 @@
 
 class Api::V1::FileImportMatchesController < Api::V1::ApplicationController
   include FileImportManagerHandler
+
   private
 
   def execute_job

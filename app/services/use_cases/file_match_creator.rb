@@ -29,6 +29,8 @@ module UseCases
         attribute.to_s.in?(permited_attributes)
       end
 
+      return if Match.find_by(create_match_relationships(match_attributes))
+
       Match.create!(match_attributes.merge(create_match_relationships(match_attributes)))
     end
 

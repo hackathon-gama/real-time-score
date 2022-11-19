@@ -27,6 +27,16 @@ RSpec.describe UseCases::FileMatchCreator do
       expect { described_class.call(file_extractor, permited_attributes: attributes) }
         .to change(Match, :count).by(2)
     end
+
+    it 'not create duplicate matches' do
+      dada = file_extractor_return
+      allow(file_extractor).to receive(:execute)
+        .and_yield(dada)
+        .and_yield(dada)
+
+      expect { described_class.call(file_extractor, permited_attributes: attributes) }
+        .to change(Match, :count).by(1)
+    end
   end
 
   context 'when pass empty or invalid permited_attributes' do
