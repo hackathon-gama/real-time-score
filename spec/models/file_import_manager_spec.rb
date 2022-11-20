@@ -54,7 +54,7 @@ RSpec.describe FileImportManager, type: :model do
   describe '#file_extension' do
     it 'will return the file extension' do
       file = fixture_file_upload('csv/teams/with_semicolon.csv')
-      file_import_manager = create(:file_import_manager, file: file)
+      file_import_manager = create(:file_import_manager, file:)
 
       expect(file_import_manager.file_extension).to eq('csv')
     end

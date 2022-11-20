@@ -9,7 +9,7 @@ RSpec.describe 'Api::V1::FileImportMaches', type: :request do
     before do
       file = fixture_file_upload('csv/teams/with_semicolon.csv')
 
-      create(:file_import_manager, file: file)
+      create(:file_import_manager, file:)
     end
 
     let(:params) do

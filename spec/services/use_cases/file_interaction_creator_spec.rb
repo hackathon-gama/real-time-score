@@ -11,9 +11,9 @@ RSpec.describe UseCases::FileInteractionCreator do
     before do
       allow(file_extractor).to receive(:execute)
         .and_yield({ interaction_type: 'start_game', description: Faker::Lorem.sentence,
-          time: 1, minutes: 20, match: match })
+          time: 1, minutes: 20, match: })
         .and_yield({ interaction_type: 'faults', description: Faker::Lorem.sentence,
-          time: 2, minutes: 20, match: match })
+          time: 2, minutes: 20, match: })
     end
 
     it 'will create teams' do
@@ -30,9 +30,9 @@ RSpec.describe UseCases::FileInteractionCreator do
     before do
       allow(file_extractor).to receive(:execute)
         .and_yield({ interaction_type: 'start_game', description: Faker::Lorem.sentence,
-          time: 1, minutes: 20, match: match })
+          time: 1, minutes: 20, match: })
         .and_yield({ interaction_type: 'faults', description: Faker::Lorem.sentence,
-          time: 2, minutes: 20, match: match })
+          time: 2, minutes: 20, match: })
     end
 
     it 'raise ActiveRecord::RecordInvalid error without required permited_attributes' do

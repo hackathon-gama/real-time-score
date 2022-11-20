@@ -16,7 +16,7 @@ class CSVExtractor < BaseExtractor
 
   private
 
-  def row_interaction(&block)
+  def row_interaction(&)
     CSV.parse(file, **options, &)
   end
 

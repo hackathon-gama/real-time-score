@@ -10,7 +10,7 @@ RSpec.describe UseCases::FileMatchCreator do
   def file_extractor_return(stage = :groups)
     {
       away_goals: 0, home_goals: 0, match_date: Faker::Time,
-      team_away: Faker::Team.name, team_home: Faker::Team.name, stage: stage
+      team_away: Faker::Team.name, team_home: Faker::Team.name, stage:
     }.as_json
   end
 
