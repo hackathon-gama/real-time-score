@@ -2,7 +2,7 @@
 
 require 'file_extractors/csv_extractor'
 
-class FileImportTeamJob < ApplicationJob
+class FileImportMatchJob < ApplicationJob
   queue_as :default
 
   AVALIABLE_EXTRACTORS = {
@@ -17,10 +17,10 @@ class FileImportTeamJob < ApplicationJob
     @file_import_manager.start!
 
     ActiveRecord::Base.transaction do
-      UseCases::FileTeamCreator
+      UseCases::FileMatchCreator
         .call(
           file_extractor,
-          permited_attributes: UseCases::FileTeamCreator::PERMITED_ATTRIBUTES
+          permited_attributes: UseCases::FileMatchCreator::PERMITED_ATTRIBUTES
         )
     end
 

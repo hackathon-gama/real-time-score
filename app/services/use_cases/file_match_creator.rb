@@ -2,6 +2,9 @@
 
 module UseCases
   class FileMatchCreator < Base
+    PERMITED_ATTRIBUTES =
+      %w[away_goals home_goals match_date team_away team_home stage].freeze
+
     attr_reader :file_extractor, :permited_attributes
 
     def initialize(file_extractor, permited_attributes:)
@@ -26,7 +29,17 @@ module UseCases
         attribute.to_s.in?(permited_attributes)
       end
 
-      Match.create!(match_attributes)
+      return if Match.find_by(create_match_relationships(match_attributes))
+
+      Match.create!(match_attributes.merge(create_match_relationships(match_attributes)))
+    end
+
+    def create_match_relationships(attributes)
+      stage = Stage.find_or_create_by!(name: attributes['stage'])
+      team_home = Team.find_or_create_by!(name: attributes['team_home'])
+      team_away = Team.find_or_create_by!(name: attributes['team_away'])
+
+      { 'team_home' => team_home, 'team_away' => team_away, 'stage' => stage }
     end
   end
 end
