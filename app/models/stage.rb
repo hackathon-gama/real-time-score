@@ -2,6 +2,7 @@
 
 class Stage < ApplicationRecord
   validates :name, presence: true
+  has_many :matches, dependent: :destroy
 
   enum name: {
     groups: 'groups', octave: 'octave',
