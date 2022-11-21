@@ -7,8 +7,9 @@ RSpec.describe Interaction, type: :model do
 
   describe 'validations' do
     it { is_expected.to validate_length_of(:description).is_at_most(255) }
-    it { is_expected.to validate_numericality_of(:minutes) }
+    it { is_expected.to validate_numericality_of(:minutes).is_less_than(60) }
     it { is_expected.to validate_numericality_of(:time) }
+    it { is_expected.to validate_inclusion_of(:time).in_range(1..2) }
     it { is_expected.to belong_to(:match) }
   end
 
