@@ -22,6 +22,7 @@ RSpec.describe MatchesChannel, type: :channel do
         match = create(:match)
         result = [
           {
+            id: match.id,
             team_home: match.team_home.name,
             team_away: match.team_away.name,
             stage: match.stage.name,
