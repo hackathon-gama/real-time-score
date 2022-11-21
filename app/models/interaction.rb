@@ -8,6 +8,6 @@ class Interaction < ApplicationRecord
   validates :minutes, numericality: { only_integer: true }
 
   def update_match
-    raise(NotImplementedError, 'Must be implemented in children')
+    raise(NotImplementedError, 'Must be implemented!')
   end
 end
