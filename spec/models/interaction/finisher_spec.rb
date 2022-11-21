@@ -5,12 +5,12 @@ require 'rails_helper'
 RSpec.describe Interaction::Finisher, type: :model do
   subject(:interaction) { create(:interaction_finisher) }
 
-  fdescribe '#udpate_match' do
-    it 'should change Match#status from pending to running' do
-      subject.match.start!
+  describe '#udpate_match' do
+    it 'change Match#status from running to finished' do
+      interaction.match.start!
 
-      expect { subject.update_match }
-        .to change { subject.match.status }
+      expect { interaction.update_match }
+        .to change { interaction.match.status }
         .from('running').to('finished')
     end
   end

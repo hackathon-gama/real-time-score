@@ -6,9 +6,9 @@ RSpec.describe Interaction::Starter, type: :model do
   subject(:interaction) { create(:interaction_starter) }
 
   describe '#udpate_match' do
-    it 'should change Match#status from pending to running' do
-      expect { subject.update_match }
-        .to change { subject.match.status }
+    it 'change Match#status from pending to running' do
+      expect { interaction.update_match }
+        .to change { interaction.match.status }
         .from('pending').to('running')
     end
   end

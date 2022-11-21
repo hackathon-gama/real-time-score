@@ -19,8 +19,8 @@ RSpec.describe Interaction, type: :model do
   end
 
   describe '#udpate_match' do
-    it 'should raise NotImplementedError' do
-      expect { subject.update_match }
+    it 'raise NotImplementedError' do
+      expect { interaction.update_match }
         .to raise_error(NotImplementedError, 'Must be implemented in children')
     end
   end
