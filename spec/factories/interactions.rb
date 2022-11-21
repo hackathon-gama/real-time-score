@@ -8,5 +8,6 @@ FactoryBot.define do
     match
 
     factory :interaction_starter, class: Interaction::Starter
+    factory :interaction_finisher, class: Interaction::Finisher
   end
 end
