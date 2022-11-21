@@ -10,21 +10,18 @@ RSpec.describe Interaction, type: :model do
     it { is_expected.to validate_numericality_of(:minutes) }
     it { is_expected.to validate_numericality_of(:time) }
     it { is_expected.to belong_to(:match) }
-
-    it do
-      expect(interaction).to define_enum_for(:interaction_type)
-        .with_values(
-          faults: 'faults', goal: 'goal',
-          corner_kick: 'corner_kick', penalty: 'penalty',
-          start_game: 'start_game', final_game: 'final_game'
-        )
-        .backed_by_column_of_type(:string)
-    end
   end
 
   describe 'interaction create' do
     before { interaction.save }
 
     it { is_expected.to be_persisted }
+  end
+
+  describe '#udpate_match' do
+    it 'should raise NotImplementedError' do
+      expect { subject.update_match }
+        .to raise_error(NotImplementedError, 'Must be implemented in children')
+    end
   end
 end
