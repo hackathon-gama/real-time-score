@@ -26,4 +26,9 @@ class Match < ApplicationRecord
       transitions from: :running, to: :finished
     end
   end
+
+  def increment_goals!(team_id:)
+    increment!(:home_goals) if team_id == team_home_id
+    increment!(:away_goals) if team_id == team_away_id
+  end
 end
