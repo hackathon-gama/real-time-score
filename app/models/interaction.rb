@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class Interaction < ApplicationRecord
+  TYPE_CLASSES = {
+    'start' => Interaction::Starter,
+    'finish' => Interaction::Finisher,
+    'goal' => Interaction::Goal,
+    'penalty' => Interaction::Penalty,
+    'fault' => Interaction::Fault,
+    'corner_kick' => Interaction::CornerKick
+  }.freeze
+
   belongs_to :match
 
   validates :description, length: { maximum: 255 }
