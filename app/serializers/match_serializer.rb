@@ -9,6 +9,7 @@ class MatchSerializer
 
   def as_json
     {
+      id: match.id,
       team_home: team_home.name,
       team_away: team_away.name,
       stage: stage.name,
