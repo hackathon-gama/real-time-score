@@ -12,11 +12,14 @@ class MatchSerializer
       id: match.id,
       team_home: team_home.name,
       team_away: team_away.name,
+      team_home_id: team_home.id,
+      team_away_id: team_away.id,
       stage: stage.name,
       home_goals: match.home_goals,
       away_goals: match.away_goals,
       status: match.status,
-      match_date: match.match_date
+      match_date: match.match_date,
+      updated_at: match.updated_at
     }.as_json
   end
 

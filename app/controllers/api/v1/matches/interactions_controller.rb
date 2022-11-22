@@ -36,6 +36,6 @@ class Api::V1::Matches::InteractionsController < Api::V1::ApplicationController
   end
 
   def interaction_params
-    params.require(:interaction).permit(:description, :time, :minutes)
+    params.require(:interaction).permit(:description, :time, :minutes, :team_id)
   end
 end
