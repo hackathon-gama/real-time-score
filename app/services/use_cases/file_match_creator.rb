@@ -20,8 +20,8 @@ module UseCases
 
     private
 
-    def import_matches_attributes(&block)
-      @file_extractor.execute(&block)
+    def import_matches_attributes(&)
+      @file_extractor.execute(&)
     end
 
     def create_match(match_attributes)

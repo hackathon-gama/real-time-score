@@ -25,7 +25,7 @@ class BaseExtractor
 
   private
 
-  def row_interaction(&block)
+  def row_interaction(&)
     raise(NotImplementedError, 'Not implemented yet')
   end
 

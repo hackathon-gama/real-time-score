@@ -8,7 +8,7 @@ RSpec.describe FileImportTeamJob, type: :job do
       let(:file_import_manager) do
         file = fixture_file_upload('csv/teams/with_semicolon.csv')
 
-        create(:file_import_manager, file: file)
+        create(:file_import_manager, file:)
       end
 
       context 'when FileImportTeam can run' do
@@ -26,7 +26,7 @@ RSpec.describe FileImportTeamJob, type: :job do
         context 'when have one team with invalid attributes' do
           let(:file_import_manager) do
             file = fixture_file_upload('csv/teams/with_invalid_team.csv')
-            create(:file_import_manager, file: file)
+            create(:file_import_manager, file:)
           end
 
           it 'will raise ActiveRecord::RecordInvalid' do

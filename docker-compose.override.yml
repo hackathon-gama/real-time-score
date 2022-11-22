@@ -48,5 +48,18 @@ services:
 
     networks:
       - app-net
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: redis-cli -h 127.0.0.1 ping | grep -q '^PONG$$'
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - 6379:6379
+    networks:
+      - app-net
+    volumes:
+      - redis:/data
 networks:
   app-net: {}

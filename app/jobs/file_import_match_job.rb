@@ -24,10 +24,21 @@ class FileImportMatchJob < ApplicationJob
         )
     end
 
+    send_matches_broad_cast
+
     @file_import_manager.done!
   end
 
   private
+
+  def send_matches_broad_cast
+    Stage.all.each do |stage|
+      ActionCable.server.broadcast(
+        stage.name,
+        MatchCollectionSerializer.new(stage.matches).as_json
+      )
+    end
+  end
 
   def file_extractor
     file_extractor_klass =

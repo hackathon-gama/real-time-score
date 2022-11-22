@@ -38,7 +38,6 @@ module ExceptionHandler
     end
 
     rescue_from ActionDispatch::Http::Parameters::ParseError do |_e|
-      Rails.logger.error(e.message)
       render json: { message: 'the payload sent is not valid' }, status: :bad_request
     end
 

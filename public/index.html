@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Placar G2</title>
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/cable.js"></script>
+    <script src="js/connection.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <v-card>
+        <v-toolbar
+          color="cyan"
+          dark
+          flat
+        >
+          <v-toolbar-title>
+            <a style="color: white" href="/">Placar G2</a>
+          </v-toolbar-title>
+
+          <v-spacer></v-spacer>
+
+          <template
+            v-slot:extension
+            v-if="!isShowingMatchCard"
+          >
+            <v-tabs
+              v-model="tab"
+              centered
+              @change="onChangeTab(tab)"
+            >
+              <v-tabs-slider color="yellow"></v-tabs-slider>
+
+              <v-tab
+                v-for="item in items"
+                :key="item"
+              >
+                {{ item }}
+              </v-tab>
+            </v-tabs>
+          </template>
+        </v-toolbar>
+
+        <v-tabs-items
+          v-model="tab"
+          v-if="!isShowingMatchCard"
+        >
+          <v-tab-item
+            v-for="item in items"
+            :key="item"
+          >
+            <v-container class="grey lighten-5">
+              <v-row>
+                <template v-for="(match, index) in matches">
+                  <v-col :key="index">
+                    <v-card
+                      @click="onClickMatchCard(match)"
+                      class="pa-2"
+                      outlined
+                      style="cursor: pointer"
+                    >
+                      <v-card-text class="py-md-2"> {{ match.team_home }} : {{ match.home_goals }} </v-card-text>
+                      <v-card-text class="py-md-2"> {{ match.team_away }} : {{ match.away_goals }}  </v-card-text>
+                      <v-card-text class="py-md-1"> Status : {{ matchStatus(match) }}  </v-card-text>
+                    </v-card>
+
+                  </v-col>
+                  <v-responsive
+                    v-if="index % 2 === 1"
+                    :key="`width-${index}`"
+                    width="100%"
+                  ></v-responsive>
+                </template>
+              </v-row>
+            </v-container>
+          </v-tab-item>
+        </v-tabs-items>
+
+        <v-card
+          class="pa-2"
+          v-if="isShowingMatchCard"
+          dark
+        >
+          <div style="margin-bottom: 20px" class="py-md-2">
+            <v-card-text  style="font-size: 20px; font-weight: bolder;">
+              {{ showingMatch.team_home }} : {{ showingMatch.home_goals }}
+            </v-card-text>
+            <template v-if="isAdmin">
+              <v-btn
+              outlined
+              rounded
+              text
+              @click="createInteraction(showingMatch.id, showingMatch.team_home_id, showingMatch.team_home, 'goal')"
+              >
+                Gol
+              </v-btn>
+              <v-btn
+                outlined
+                rounded
+                ligth
+                text
+                @click="createInteraction(showingMatch.id, showingMatch.team_home_id, showingMatch.team_home, 'corner_kick')"
+              >
+                Escanteio
+              </v-btn>
+
+              <v-btn
+                outlined
+                rounded
+                text
+                @click="createInteraction(showingMatch.id, showingMatch.team_home_id, showingMatch.team_home, 'penalty')"
+              >
+                Penalti
+              </v-btn>
+
+              <v-btn
+                outlined
+                rounded
+                text
+                @click="createInteraction(showingMatch.id, showingMatch.team_home_id, showingMatch.team_home, 'fault')"
+              >
+                Fault
+              </v-btn>
+            </template>
+          </div>
+          <div style="margin: 20px 0 20px 0" class="py-md-4 my-md-4">
+            <v-card-text style="font-size: 20px; font-weight: bolder;">
+              {{ showingMatch.team_away }} : {{ showingMatch.away_goals }}
+            </v-card-text>
+            <template v-if="isAdmin">
+              <v-btn
+              outlined
+              rounded
+              text
+              @click="createInteraction(showingMatch.id, showingMatch.team_away_id, showingMatch.team_away, 'goal')"
+              >
+                Gol
+              </v-btn>
+              <v-btn
+                outlined
+                rounded
+                ligth
+                text
+                @click="createInteraction(showingMatch.id, showingMatch.team_away_id, showingMatch.team_away, 'corner_kick')"
+              >
+                Escanteio
+              </v-btn>
+
+              <v-btn
+                outlined
+                rounded
+                text
+                @click="createInteraction(showingMatch.id, showingMatch.team_away_id, showingMatch.team_away, 'penalty')"
+              >
+                Penalti
+              </v-btn>
+
+              <v-btn
+                outlined
+                rounded
+                text
+                @click="createInteraction(showingMatch.id, showingMatch.team_away_id, showingMatch.team_away, 'fault')"
+              >
+                Fault
+              </v-btn>
+            </template>
+          </div>
+          <v-card-text  style="font-size: 15px; font-weight: bolder;" class="py-md-1"> Status : {{ matchStatus(showingMatch) }}  </v-card-text>
+          <v-card-actions v-if="isAdmin">
+            <v-btn
+              outlined
+              rounded
+              text
+              @click="createInteraction(showingMatch.id, null, null, 'start')"
+            >
+              Inciar
+            </v-btn>
+
+            <v-btn
+              outlined
+              rounded
+              text
+              @click="createInteraction(showingMatch.id, null, null, 'finish')"
+            >
+              Finalizar
+            </v-btn>
+          </v-card-actions>
+          <v-list two-line>
+            <v-list-item-group
+              multiple
+            >
+              <template v-for="(interaction, index) in interactions">
+                <v-list-item :key="interaction.id">
+                  <template>
+                    <v-list-item-content>
+                      <v-list-item-title v-text="interactionType(interaction)"></v-list-item-title>
+
+                      <v-list-item-subtitle
+                        class="text--primary"
+                        v-text="interaction.description"
+                      ></v-list-item-subtitle>
+
+                      <!-- <v-list-item-subtitle v-text="item.subtitle"></v-list-item-subtitle> -->
+                    </v-list-item-content>
+                  </template>
+                </v-list-item>
+
+                <v-divider
+                  v-if="index < items.length - 1"
+                  :key="index"
+                ></v-divider>
+              </template>
+            </v-list-item-group>
+          </v-list>
+        </v-card>
+      </v-card>
+    </div>
+  </body>
+</html>

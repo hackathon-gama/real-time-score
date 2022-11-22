@@ -1,0 +1,49 @@
+stage;team_home;team_away;away_goals;home_goals;match_date
+groups;Catar;Equador;0;2;2022-11-20T13:00:00Z
+groups;Senegal;Holanda;2;0;2022-11-21T13:00:00Z
+groups;Catar;Senegal;0;0;2022-11-25T10:00:00Z
+groups;Holanda;Equador;0;0;2022-11-25T13:00:00Z
+groups;Holanda;Catar;0;0;2022-11-29T12:00:00Z
+groups;Equador;Senegal;2;0;2022-11-29T12:00:00Z
+groups;Inglaterra;Irã;6;2;2022-11-21T10:00:00Z
+groups;Estados Unidos;País de Gales;1;1;2022-11-21T16:00:00Z
+groups;País de Gales;Irã;0;0;2022-11-25T07:00:00Z
+groups;Inglaterra;Estados Unidos;0;0;2022-11-25T16:00:00Z
+groups;País de Gales;Inglaterra;0;0;2022-11-29T16:00:00Z
+groups;Irã;Estados Unidos;0;0;2022-11-29T16:00:00Z
+groups;Argentina;Arábia Saudita;1;2;2022-11-22T07:00:00Z
+groups;México;Polônia;0;0;2022-11-22T13:00:00Z
+groups;Polônia;Arábia Saudita;0;0;2022-11-26T10:00:00Z
+groups;Argentina;México;0;0;2022-11-26T16:00:00Z
+groups;Polônia;Argentina;0;0;2022-11-30T16:00:00Z
+groups;Arábia Saudita;México;0;0;2022-11-30T16:00:00Z
+groups;Dinamarca;Tunísia;0;0;2022-11-22T10:00:00Z
+groups;França;Austrália;0;0;2022-11-22T16:00:00Z
+groups;Tunísia;Austrália;0;0;2022-11-26T07:00:00Z
+groups;França;Dinamarca;0;0;2022-11-26T13:00:00Z
+groups;Tunísia;França;0;0;2022-11-30T12:00:00Z
+groups;Austrália;Dinamarca;0;0;2022-11-30T12:00:00Z
+groups;Alemanha;Japão;0;0;2022-11-23T10:00:00Z
+groups;Espanha;Costa Rica;0;0;2022-11-23T13:00:00Z
+groups;Japão;Costa Rica;0;0;2022-11-27T07:00:00Z
+groups;Espanha;Alemanha;0;0;2022-11-27T16:00:00Z
+groups;Japão;Espanha;0;0;2022-12-01T16:00:00Z
+groups;Costa Rica;Alemanha;0;0;2022-12-01T16:00:00Z
+groups;Marrocos;Croácia;0;0;2022-11-23T07:00:00Z
+groups;Bélgica;Canadá;0;0;2022-11-23T16:00:00Z
+groups;Bélgica;Marrocos;0;0;2022-11-27T10:00:00Z
+groups;Croácia;Canadá;0;0;2022-11-27T13:00:00Z
+groups;Croácia;Bélgica;0;0;2022-12-01T12:00:00Z
+groups;Canadá;Marrocos;0;0;2022-12-01T12:00:00Z
+groups;Suíça;Camarões;0;0;2022-11-24T07:00:00Z
+groups;Brasil;Sérvia;0;0;2022-11-24T16:00:00Z
+groups;Camarões;Sérvia;0;0;2022-11-28T07:00:00Z
+groups;Brasil;Suíça;0;0;2022-11-28T13:00:00Z
+groups;Camarões;Brasil;0;0;2022-12-02T16:00:00Z
+groups;Sérvia;Suíça;0;0;2022-12-02T16:00:00Z
+groups;Uruguai;Coreia do Sul;0;0;2022-11-24T10:00:00Z
+groups;Portugal;Gana;0;0;2022-11-24T13:00:00Z
+groups;Coreia do Sul;Gana;0;0;2022-11-28T10:00:00Z
+groups;Portugal;Uruguai;0;0;2022-11-28T16:00:00Z
+groups;Coreia do Sul;Portugal;0;0;2022-12-02T12:00:00Z
+groups;Gana;Uruguai;0;0;2022-12-02T12:00:00Z

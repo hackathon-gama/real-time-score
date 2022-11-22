@@ -19,8 +19,8 @@ module UseCases
 
     private
 
-    def import_teams_attributes(&block)
-      @file_extractor.execute(&block)
+    def import_teams_attributes(&)
+      @file_extractor.execute(&)
     end
 
     def create_team(team_attributes)

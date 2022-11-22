@@ -17,8 +17,8 @@ module UseCases
 
     private
 
-    def import_stages_attributes(&block)
-      @file_extractor.execute(&block)
+    def import_stages_attributes(&)
+      @file_extractor.execute(&)
     end
 
     def create_stage(stage_attributes)
