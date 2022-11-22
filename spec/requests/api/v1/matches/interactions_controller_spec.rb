@@ -26,7 +26,9 @@ RSpec.describe 'Api::V1::Matches::Interactions', type: :request do
     end
 
     it 'returns empty array in response body' do
-      get api_v1_match_interactions_path(create(:match, stage: match.stage)),
+      stage = create(:stage, name: 'final')
+
+      get api_v1_match_interactions_path(create(:match, stage:)),
         params:,
         headers: auth_headers
 
@@ -60,6 +62,30 @@ RSpec.describe 'Api::V1::Matches::Interactions', type: :request do
         as: :json
 
       expect(response).to have_http_status(:created)
+    end
+
+    it 'will broadcast interactions in InteractionsChannel' do
+      expect do
+        post api_v1_match_interactions_path(match),
+          params:,
+          headers: auth_headers,
+          as: :json
+      end
+        .to have_broadcasted_to("match_#{match.id}_interactions")
+    end
+
+    it 'will call #update_match in new interaction' do
+      interaction = instance_double(Interaction::Starter)
+      allow(Interaction::Starter).to receive(:create!).and_return(interaction)
+      allow(InteractionSerializer).to receive(:new).and_return({})
+      allow(interaction).to receive(:update_match)
+
+      expect(interaction).to receive(:update_match)
+
+      post api_v1_match_interactions_path(match),
+        params:,
+        headers: auth_headers,
+        as: :json
     end
 
     context 'when sending invalid params' do

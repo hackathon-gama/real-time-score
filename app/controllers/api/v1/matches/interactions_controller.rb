@@ -8,9 +8,11 @@ class Api::V1::Matches::InteractionsController < Api::V1::ApplicationController
   end
 
   def create
-    @klass.create!(interaction_params) do |interaction|
-      interaction.match_id = @match.id
-    end
+    interaction = @klass.create!(interaction_params.merge(match_id: @match.id))
+
+    interaction.update_match
+
+    broadcast_interaction(interaction)
 
     head :created
   end
@@ -25,6 +27,12 @@ class Api::V1::Matches::InteractionsController < Api::V1::ApplicationController
     @klass = Interaction::TYPE_CLASSES.fetch(params[:type], nil)
 
     raise(ActionDispatch::Http::Parameters::ParseError, 'invalid type') unless @klass
+  end
+
+  def broadcast_interaction(interaction)
+    ActionCable.server.broadcast(
+      "match_#{@match.id}_interactions", InteractionSerializer.new(interaction).as_json
+    )
   end
 
   def interaction_params
