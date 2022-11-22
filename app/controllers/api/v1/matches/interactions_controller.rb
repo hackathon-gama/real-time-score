@@ -3,6 +3,10 @@
 class Api::V1::Matches::InteractionsController < Api::V1::ApplicationController
   before_action :set_match, :set_interaction_class
 
+  def index
+    @interactions = @klass.where(match: @match)
+  end
+
   def create
     @klass.create!(interaction_params) do |interaction|
       interaction.match_id = @match.id

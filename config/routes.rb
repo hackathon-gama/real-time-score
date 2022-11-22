@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
-  namespace :api do
+  namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :direct_uploads, only: :create
       resources :file_import_teams, only: :create
