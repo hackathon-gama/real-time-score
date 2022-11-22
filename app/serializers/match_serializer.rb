@@ -8,22 +8,37 @@ class MatchSerializer
   end
 
   def as_json
+    match_data
+      .merge(team_data)
+      .merge(stage_data)
+      .as_json
+  end
+
+  private
+
+  def match_data
     {
       id: match.id,
-      team_home: team_home.name,
-      team_away: team_away.name,
-      team_home_id: team_home.id,
-      team_away_id: team_away.id,
-      stage: stage.name,
       home_goals: match.home_goals,
       away_goals: match.away_goals,
       status: match.status,
       match_date: match.match_date,
       updated_at: match.updated_at
-    }.as_json
+    }
   end
 
-  private
+  def team_data
+    {
+      team_home: team_home.name,
+      team_away: team_away.name,
+      team_home_id: team_home.id,
+      team_away_id: team_away.id
+    }
+  end
+
+  def stage_data
+    { stage: stage.name }
+  end
 
   def stage
     @stage ||= match.stage
