@@ -5,10 +5,10 @@ require 'rails_helper'
 RSpec.describe Interaction::CornerKick, type: :model do
   let(:interaction) { create(:interaction_corner_kick) }
 
-  describe '#udpate_match' do
-    it 'raise NotImplementedError' do
+  describe '#update_match' do
+    it 'set updated_at in match' do
       expect { interaction.update_match }
-        .to raise_error(NotImplementedError, 'Must be implemented!')
+        .to change(interaction.match, :updated_at)
     end
   end
 end
