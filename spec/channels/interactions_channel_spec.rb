@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe InteractionsChannel, type: :channel do
-  fdescribe '#subscribed' do
+  describe '#subscribed' do
     context 'when send correct match' do
       let(:match) { create(:match) }
       let(:stream_from) { "match_#{match.id}_interactions" }
@@ -20,7 +20,7 @@ RSpec.describe InteractionsChannel, type: :channel do
       end
 
       it 'return correct interactions' do
-        interaction = create(:interaction_starter, match: match)
+        interaction = create(:interaction_starter, match:)
 
         result = [
           {
